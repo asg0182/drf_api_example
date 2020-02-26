@@ -1,9 +1,14 @@
 
 
-from rest_framework import mixins, generics, filters, permissions
+from rest_framework import mixins, generics, filters, permissions, views, authentication
 
 from .serializers import PostSerializer
 from blog.models import Post
+
+
+class HealthCheck(views.APIView):
+    permission_classes = [permissions.IsAuthenticated]
+    authentication_classes = [authentication.BasicAuthentication]
 
 
 class PostListView(generics.ListAPIView, mixins.RetrieveModelMixin, mixins.CreateModelMixin):

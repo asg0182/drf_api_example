@@ -6,7 +6,7 @@ SECRET_KEY = '3hi!4u%lmz0%4ldz8#nfj$ga$=8-s3*wb7q_mcdtfn3&i_^q(0'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -17,6 +17,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +71,12 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+]
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:8080'
 ]
 
 LANGUAGE_CODE = 'ru-ru'
