@@ -1,7 +1,7 @@
 
 
 from rest_framework import mixins, generics, filters, permissions, views, authentication
-
+from  rest_framework.response import Response
 from .serializers import PostSerializer
 from blog.models import Post
 
@@ -9,6 +9,9 @@ from blog.models import Post
 class HealthCheck(views.APIView):
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [authentication.BasicAuthentication]
+
+    def get(self, request, format=None):
+        return Response('APP is up state')
 
 
 class PostListView(generics.ListAPIView, mixins.RetrieveModelMixin, mixins.CreateModelMixin):
